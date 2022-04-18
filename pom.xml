@@ -8,7 +8,9 @@
     <artifactId>springcloud</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>common</module>
         <module>pay</module>
+        <module>order</module>
     </modules>
     <!--打包方式为pom-->
     <packaging>pom</packaging>
@@ -31,6 +33,14 @@
     <!--如果需要覆盖，则自己在对应pom.xml指定-->
     <dependencyManagement>
         <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>provided</scope>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-context -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
