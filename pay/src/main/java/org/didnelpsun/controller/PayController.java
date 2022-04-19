@@ -28,12 +28,12 @@ public class PayController {
     }
 
     @PostMapping()
-    public Result<Integer> insert(Pay pay) {
+    public Result<Integer> insert(@RequestBody Pay pay) {
         return payService.insert(pay);
     }
 
     @PutMapping()
-    public Result<Integer> update(Pay pay) {
+    public Result<Integer> update(@RequestBody Pay pay) {
         return payService.update(pay);
     }
 
