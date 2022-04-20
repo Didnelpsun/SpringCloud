@@ -1,0 +1,43 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: pay
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/data
+    username: root
+    password: root
+
+mybatis:
+  # 定义实体类所在的包
+  type-aliases-package: org.didnelpsun.entity
+  mapper-locations: classpath:mapper/*.xml
+
+eureka:
+  instance:
+    instance-id: pay8002
+    prefer-ip-address: true
+  # 自定义注册中心的主机名和端口的参数
+  server:
+    hostname:
+      - localhost
+      - test
+    port:
+      - 7001
+      - 7002
+  client:
+    # true表示向注册中心注册自己，因为这是业务模块
+    register-with-eureka: true
+    # 是否从EurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${eureka.server.hostname[0]}:${eureka.server.port[0]}/eureka/, http://${eureka.server.hostname[1]}:${eureka.server.port[1]}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

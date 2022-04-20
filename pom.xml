@@ -9,9 +9,12 @@
     <version>${project.version}</version>
     <modules>
         <module>common</module>
-        <module>pay</module>
-        <module>order</module>
-        <module>eureka</module>
+        <module>pay8001</module>
+        <module>pay8002</module>
+        <module>pay8003</module>
+        <module>order81</module>
+        <module>eureka7001</module>
+        <module>eureka7002</module>
     </modules>
     <!--打包方式为pom-->
     <packaging>pom</packaging>
@@ -29,8 +32,8 @@
         <druid.version>1.2.9</druid.version>
         <lombok.version>1.18.22</lombok.version>
         <mybatis.version>2.2.2</mybatis.version>
-        <eureka.version>3.1.1</eureka.version>
         <jackson.version>2.13.2</jackson.version>
+        <cloud.version>2021.0.1</cloud.version>
     </properties>
 
     <!--子模块继承后锁定依赖版本-->
@@ -69,10 +72,28 @@
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${cloud.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-context -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-context</artifactId>
+                <version>${spring.cloud.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-zookeeper-discovery -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
                 <version>${spring.cloud.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -104,13 +125,13 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-                <version>${eureka.version}</version>
+                <version>${spring.cloud.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-server -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-                <version>${eureka.version}</version>
+                <version>${spring.cloud.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
             <dependency>

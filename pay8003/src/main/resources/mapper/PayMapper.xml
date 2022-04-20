@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.didnelpsun.dao.IPayDao">
+    <!--这里type必须明确指定全限定类名-->
+    <resultMap id="PayResult" type="org.didnelpsun.entity.Pay">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="serial" property="serial" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="select" parameterType="Long" resultMap="PayResult">
+        select *
+        from pay
+        where id = #{id}
+    </select>
+    <select id="selects" resultMap="PayResult">
+        select *
+        from pay
+    </select>
+    <!--yaml中指定了type-aliases-package所以parameterType、resultType不用写全限定类名，会自动在指定路径下查找-->
+    <insert id="insert" parameterType="Pay" useGeneratedKeys="true" keyProperty="id">
+        insert into pay(serial)
+        values (#{serial})
+    </insert>
+    <update id="update" parameterType="Pay">
+        update pay
+        set serial=#{serial}
+        where id = #{id}
+    </update>
+    <delete id="delete" parameterType="Pay">
+        delete
+        from pay
+        where id = #{id}
+    </delete>
+</mapper>
