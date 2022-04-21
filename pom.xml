@@ -36,7 +36,7 @@
         <spring.cloud.eureka.version>${spring.cloud.version}</spring.cloud.eureka.version>
         <spring.cloud.zookeeper.version>${spring.cloud.version}</spring.cloud.zookeeper.version>
         <spring.cloud.consul.version>3.1.0</spring.cloud.consul.version>
-        <spring.cloud.ribbon.version>1.4.7.RELEASE</spring.cloud.ribbon.version>
+        <spring.cloud.ribbon.version>2.2.10.RELEASE</spring.cloud.ribbon.version>
         <mysql.version>8.0.28</mysql.version>
         <druid.version>1.2.9</druid.version>
         <lombok.version>1.18.22</lombok.version>
@@ -123,10 +123,16 @@
                 <artifactId>spring-cloud-starter-consul-discovery</artifactId>
                 <version>${spring.cloud.consul.version}</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-ribbon -->
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-netflix-ribbon -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-ribbon</artifactId>
+                <artifactId>spring-cloud-netflix-ribbon</artifactId>
+                <version>${spring.cloud.ribbon.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-archaius -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-archaius</artifactId>
                 <version>${spring.cloud.ribbon.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -171,6 +177,11 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.ribbon</groupId>
+                <artifactId>ribbon-loadbalancer</artifactId>
+                <version>${ribbon.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

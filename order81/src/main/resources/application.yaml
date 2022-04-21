@@ -10,7 +10,6 @@ remote:
   url: http://localhost
   port: 8001
 
-
 eureka:
   instance:
     instance-id: order
