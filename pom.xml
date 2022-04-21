@@ -12,7 +12,11 @@
         <module>pay8001</module>
         <module>pay8002</module>
         <module>pay8003</module>
+        <module>pay8004</module>
         <module>order81</module>
+        <module>order82</module>
+        <module>order83</module>
+        <module>order84</module>
         <module>eureka7001</module>
         <module>eureka7002</module>
     </modules>
@@ -28,12 +32,17 @@
         <spring.version>5.3.19</spring.version>
         <spring.boot.version>2.6.6</spring.boot.version>
         <spring.cloud.version>3.1.1</spring.cloud.version>
+        <spring.cloud.dependencies.version>2021.0.1</spring.cloud.dependencies.version>
+        <spring.cloud.eureka.version>${spring.cloud.version}</spring.cloud.eureka.version>
+        <spring.cloud.zookeeper.version>${spring.cloud.version}</spring.cloud.zookeeper.version>
+        <spring.cloud.consul.version>3.1.0</spring.cloud.consul.version>
+        <spring.cloud.ribbon.version>1.4.7.RELEASE</spring.cloud.ribbon.version>
         <mysql.version>8.0.28</mysql.version>
         <druid.version>1.2.9</druid.version>
         <lombok.version>1.18.22</lombok.version>
         <mybatis.version>2.2.2</mybatis.version>
         <jackson.version>2.13.2</jackson.version>
-        <cloud.version>2021.0.1</cloud.version>
+        <ribbon.version>2.7.18</ribbon.version>
     </properties>
 
     <!--子模块继承后锁定依赖版本-->
@@ -57,8 +66,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>provided</scope>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor -->
             <dependency>
@@ -82,7 +89,9 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${cloud.version}</version>
+                <version>${spring.cloud.dependencies.version}</version>
+                <type>pom</type>
+                <scope>provided</scope>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-context -->
             <dependency>
@@ -90,11 +99,35 @@
                 <artifactId>spring-cloud-context</artifactId>
                 <version>${spring.cloud.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${spring.cloud.eureka.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-server -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+                <version>${spring.cloud.eureka.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-zookeeper-discovery -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
-                <version>${spring.cloud.version}</version>
+                <version>${spring.cloud.zookeeper.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-consul-discovery -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+                <version>${spring.cloud.consul.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-ribbon -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-ribbon</artifactId>
+                <version>${spring.cloud.ribbon.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
             <dependency>
@@ -120,18 +153,6 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-                <version>${spring.cloud.version}</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-server -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-                <version>${spring.cloud.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
             <dependency>

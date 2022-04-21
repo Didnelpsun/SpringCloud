@@ -1,0 +1,14 @@
+server:
+  # 客户端默认会访问80的端口
+  port: 82
+
+spring:
+  application:
+    name: order
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+
+remote:
+  url: http://localhost
+  port: 8003
