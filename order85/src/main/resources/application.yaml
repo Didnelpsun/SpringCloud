@@ -1,0 +1,38 @@
+server:
+  # 客户端默认会访问80的端口
+  port: 85
+
+spring:
+  application:
+    name: order
+
+eureka:
+  instance:
+    instance-id: order
+    prefer-ip-address: true
+  # 自定义注册中心的主机名和端口的参数
+  server:
+    hostname:
+      - localhost
+      - test
+    port:
+      - 7001
+      - 7002
+  client:
+    # true表示向注册中心注册自己，因为这是业务模块
+    register-with-eureka: true
+    # 是否从EurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${eureka.server.hostname[0]}:${eureka.server.port[0]}/eureka/, http://${eureka.server.hostname[1]}:${eureka.server.port[1]}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  client:
+    config:
+      read-timeout: 5000
+      connect-timeout: 5000

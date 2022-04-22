@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.didnelpsun.entity.Pay;
 import org.didnelpsun.entity.Result;
+import org.didnelpsun.order.loadbalancer.LoadBalancer;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -16,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -27,33 +27,40 @@ import java.util.List;
 @Data
 @Slf4j
 public class OrderController {
-    private String url;
-    private String port;
     private String baseUrl;
+    private String serviceId = "pay";
     @Resource
     private RestTemplate restTemplate;
     @Resource
     private DiscoveryClient discoveryClient;
+    @Resource
+    private LoadBalancer loadBalancer;
 
-    @PostConstruct
-    public void setBaseUrl() {
-//        this.baseUrl = this.url + ":" + this.port + "/pay";
-        this.baseUrl = "http://PAY/pay";
+    public String getBaseUrl() {
+        return getBaseUrl(this.serviceId);
+    }
+
+    public String getBaseUrl(String ServiceId) {
+        List<ServiceInstance> instances = discoveryClient.getInstances(ServiceId);
+        if (instances == null || instances.size() == 0)
+            return null;
+        ServiceInstance serviceInstance = loadBalancer.getInstance(instances);
+        return serviceInstance.getUri() + "/" + this.serviceId;
     }
 
     @GetMapping()
     public Result<?> selects() {
-        return restTemplate.getForObject(baseUrl, Result.class);
+        return restTemplate.getForObject(this.getBaseUrl(), Result.class);
     }
 
     @GetMapping("/{id}")
     public Result<?> select(@PathVariable Long id) {
-        return restTemplate.getForObject(baseUrl + "/" + id, Result.class);
+        return restTemplate.getForObject(this.getBaseUrl() + "/" + id, Result.class);
     }
 
     @PostMapping()
     public Result<?> insert(Pay pay) {
-        return restTemplate.postForObject(baseUrl, pay, Result.class);
+        return restTemplate.postForObject(this.getBaseUrl(), pay, Result.class);
     }
 
     // 最近在使用spring的RestTemplate的时候,调用他的delete方法发现没有返回值
@@ -61,12 +68,12 @@ public class OrderController {
 
     @PutMapping()
     public ResponseEntity<Result> update(Pay pay) {
-        return restTemplate.exchange(baseUrl, HttpMethod.PUT, new HttpEntity<>(pay, new HttpHeaders()), Result.class);
+        return restTemplate.exchange(this.getBaseUrl(), HttpMethod.PUT, new HttpEntity<>(pay, new HttpHeaders()), Result.class);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Result> delete(@PathVariable Long id) {
-        return restTemplate.exchange(baseUrl + "/" + id, HttpMethod.DELETE, null, Result.class);
+        return restTemplate.exchange(this.getBaseUrl() + "/" + id, HttpMethod.DELETE, null, Result.class);
     }
 
     // 查看已经注入的微服务名称列表
