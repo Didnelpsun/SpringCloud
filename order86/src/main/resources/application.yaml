@@ -1,10 +1,12 @@
 server:
   # 客户端默认会访问80的端口
-  port: 85
+  port: 86
 
 spring:
   application:
     name: order
+  main:
+    allow-bean-definition-overriding: true
 
 eureka:
   instance:
@@ -31,12 +33,13 @@ management:
     web:
       exposure:
         include: "*"
+
 feign:
   client:
     config:
       default:
-        readTimeout: 5000
-        connectTimeout: 5000
+        readTimeout: 3000
+        connectTimeout: 3000
 
 logging:
   level:

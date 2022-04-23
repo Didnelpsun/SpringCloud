@@ -13,11 +13,13 @@
         <module>pay8002</module>
         <module>pay8003</module>
         <module>pay8004</module>
+        <module>pay8005</module>
         <module>order81</module>
         <module>order82</module>
         <module>order83</module>
         <module>order84</module>
         <module>order85</module>
+        <module>order86</module>
         <module>eureka7001</module>
         <module>eureka7002</module>
     </modules>
@@ -39,6 +41,7 @@
         <spring.cloud.consul.version>3.1.0</spring.cloud.consul.version>
         <spring.cloud.ribbon.version>2.2.10.RELEASE</spring.cloud.ribbon.version>
         <spring.cloud.openfeign.version>${spring.cloud.version}</spring.cloud.openfeign.version>
+        <spring.cloud.hystrix.version>${spring.cloud.ribbon.version}</spring.cloud.hystrix.version>
         <mysql.version>8.0.28</mysql.version>
         <druid.version>1.2.9</druid.version>
         <lombok.version>1.18.22</lombok.version>
@@ -142,6 +145,12 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
                 <version>${spring.cloud.openfeign.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-hystrix -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${spring.cloud.hystrix.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
             <dependency>
