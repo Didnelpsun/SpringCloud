@@ -3,6 +3,7 @@ package org.didnelpsun.service.impl;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.netflix.hystrix.contrib.javanica.conf.HystrixPropertiesManager;
 import org.didnelpsun.entity.Pay;
 import org.didnelpsun.entity.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +29,17 @@ public class PayServiceImpl implements IPayService {
 
     @Override
     // 指定降级方法并配置超时时间
-    @HystrixCommand(fallbackMethod = "handlerPay", commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = PayServiceImpl.timeout)})
+    @HystrixCommand(fallbackMethod = "handlerPay", commandProperties = {
+            // 超时时间
+            @HystrixProperty(name = HystrixPropertiesManager.EXECUTION_ISOLATION_THREAD_TIMEOUT_IN_MILLISECONDS, value = PayServiceImpl.timeout),
+            // 是否开启断路器
+            @HystrixProperty(name = HystrixPropertiesManager.CIRCUIT_BREAKER_ENABLED, value = "true"),
+            // 请求次数，即一个滚动窗口中打开断路器的最少请求数
+            @HystrixProperty(name = HystrixPropertiesManager.CIRCUIT_BREAKER_REQUEST_VOLUME_THRESHOLD, value = "10"),
+            // 时间窗口期，即熔断多长时间后开始尝试恢复
+            @HystrixProperty(name = HystrixPropertiesManager.CIRCUIT_BREAKER_SLEEP_WINDOW_IN_MILLISECONDS, value = "10000"),
+            // 错误百分比到达多少后熔断
+            @HystrixProperty(name = HystrixPropertiesManager.CIRCUIT_BREAKER_ERROR_THRESHOLD_PERCENTAGE, value = "60")})
     public Result<Pay> select(Long id) {
         Pay result = payDao.select(id);
         log.info("查询结果:" + result);
@@ -93,19 +104,19 @@ public class PayServiceImpl implements IPayService {
     }
 
     public Result<List<Pay>> handlerList() {
-        return new Result<>(Code.SERVER_ERROR, "The server is wrong, please try again later", new ArrayList<>() {
+        return new Result<>(Code.SERVER_ERROR, "The server cannot provide services, please try again later", new ArrayList<>() {
         });
     }
 
     public Result<Pay> handlerPay(Long id) {
-        return new Result<>(Code.SERVER_ERROR, "The server is wrong, please try again later", new Pay(id, ""));
+        return new Result<>(Code.SERVER_ERROR, "The server cannot provide services, please try again later", new Pay(id, ""));
     }
 
     public Result<Integer> handlerInt(Pay pay) {
-        return new Result<>(Code.SERVER_ERROR, "The server is wrong, please try again later", 0);
+        return new Result<>(Code.SERVER_ERROR, "The server cannot provide services, please try again later", 0);
     }
 
     public Result<Integer> handlerInt(Long id) {
-        return new Result<>(Code.SERVER_ERROR, "The server is wrong, please try again later", 0);
+        return new Result<>(Code.SERVER_ERROR, "The server cannot provide services, please try again later", 0);
     }
 }

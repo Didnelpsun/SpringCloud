@@ -40,6 +40,18 @@ feign:
       default:
         readTimeout: 3000
         connectTimeout: 3000
+  hystrix:
+    enabled: true
+  circuitbreaker:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
 
 logging:
   level:

@@ -3,6 +3,7 @@ package org.didnelpsun.service;
 
 import org.didnelpsun.entity.Pay;
 import org.didnelpsun.entity.Result;
+import org.didnelpsun.service.impl.PayFallbackService;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Service
 // 找ServiceId为pay的微服务
-@FeignClient("PAY")
+@FeignClient(value = "PAY", fallback = PayFallbackService.class)
 public interface IPayService {
     String prefix = "/pay";
 
