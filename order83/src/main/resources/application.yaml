@@ -4,7 +4,7 @@ server:
 
 spring:
   application:
-    name: order
+    name: order83
   cloud:
     consul:
       host: localhost

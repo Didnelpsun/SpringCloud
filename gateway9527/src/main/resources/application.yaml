@@ -1,0 +1,36 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: gateway
+#  cloud:
+#    gateway:
+#      # 配置网关
+#      routes:
+#        # 路由ID，没有规则但要求唯一，建议配合服务名
+#        - id: pay8001
+#          uri: http://localhost:8001
+#          # 断言，即具体的路由匹配
+#          predicates:
+#            - Path=/pay/**
+#        - id: order81
+#          uri: http://localhost:81
+#          predicates:
+#            - Path=/order/**
+
+eureka:
+  instance:
+    instance-id: order81
+    prefer-ip-address: true
+  client:
+    service-url:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://localhost:7001/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
