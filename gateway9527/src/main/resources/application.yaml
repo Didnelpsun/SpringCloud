@@ -4,11 +4,14 @@ server:
 spring:
   application:
     name: gateway
-#  cloud:
-#    gateway:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
 #      # 配置网关
-#      routes:
-#        # 路由ID，没有规则但要求唯一，建议配合服务名
+      routes:
+        # 路由ID，没有规则但要求唯一，建议配合服务名
 #        - id: pay8001
 #          uri: http://localhost:8001
 #          # 断言，即具体的路由匹配
@@ -18,6 +21,15 @@ spring:
 #          uri: http://localhost:81
 #          predicates:
 #            - Path=/order/**
+        - id: pay
+          uri: lb://pay
+          # 断言，即具体的路由匹配
+          predicates:
+            - Path=/pay/**
+        - id: order
+          uri: lb://order
+          predicates:
+            - Path=/order/**
 
 eureka:
   instance:

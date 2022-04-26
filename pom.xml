@@ -24,6 +24,7 @@
         <module>eureka7002</module>
         <module>hystrix9001</module>
         <module>gateway9527</module>
+        <module>config3344</module>
     </modules>
     <!--打包方式为pom-->
     <packaging>pom</packaging>
@@ -164,6 +165,12 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>${spring.cloud.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-server -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-server</artifactId>
                 <version>${spring.cloud.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
