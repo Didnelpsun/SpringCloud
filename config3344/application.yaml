@@ -1,0 +1,18 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: config
+  # 配置Git
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Didnelpsun/SpringCloud.git
+          # 搜索目录
+          # 即在https://github.com/Didnelpsun/SpringCloud.git的目录的config3344包下找文件
+          search-paths:
+            - config3344
+      # 读取分支
+      label: master
