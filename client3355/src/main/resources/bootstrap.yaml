@@ -1,0 +1,23 @@
+server:
+  port: 3355
+
+spring:
+  application:
+    name: client
+  cloud:
+    config:
+      # 分支名称
+      label: main
+      # 配置文件名称
+      name: application
+      # 后缀名称
+      profile: test
+      # URI地址
+      uri: http://localhost:3344
+      # 所以最后会读取localhost:3344上的main分支上的application-test.yaml文件
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
