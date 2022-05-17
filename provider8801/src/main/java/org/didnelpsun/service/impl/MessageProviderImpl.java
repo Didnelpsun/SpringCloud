@@ -1,28 +1,29 @@
 // MessageProviderImpl.java
 package org.didnelpsun.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.didnelpsun.service.IMessageProvider;
-import org.springframework.amqp.core.MessageBuilder;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.stream.function.StreamBridge;
-import org.springframework.stereotype.Service;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.integration.support.MessageBuilder;
+import org.springframework.messaging.MessageChannel;
 
 import javax.annotation.Resource;
-import java.nio.charset.StandardCharsets;
-import java.util.UUID;
 
-@Service
+// EnableBinding将channel和exchange绑定到一起
+// Source类即定义消息推送的管道，即通过Source类将输入的不同种类的消息全部转换为源消息
+@EnableBinding(Source.class)
+@Slf4j
 public class MessageProviderImpl implements IMessageProvider {
     @Resource
-    private StreamBridge streamBridge;
-    // 引入交换机名
-    @Value("${spring.cloud.name}")
-    private String exchangeName;
+    // 消息发送管道
+    private MessageChannel output;
 
     @Override
     public String send(String text) {
-        // 发送消息，第一个为通道名称，第二个为发送消息内容
-        streamBridge.send(exchangeName, MessageBuilder.withBody(text.getBytes(StandardCharsets.UTF_8)).build());
+        // 发送消息
+        output.send(MessageBuilder.withPayload(text).build());
+        log.info("send:" + text);
         return text;
     }
 }

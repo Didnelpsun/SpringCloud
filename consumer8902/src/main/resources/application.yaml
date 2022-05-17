@@ -1,22 +1,24 @@
 server:
-  port: 8801
+  port: 8902
 
 spring:
   application:
-    name: provider
+    name: consumer
   cloud:
     # 配置Stream
     stream:
       # 服务整合
       bindings:
-        # 为输出通道名称
-        output:
+        # 为输入通道名称
+        input:
           # 使用的交换机或交换机的名称
           destination: defaultExchange
           # 消息类型
           contentType: application/json
           # 绑定消息中间件具体配置
           binder: defaultRabbit
+          # 绑定组
+          group: testGroup
       # 配置绑定的RabbitMQ服务器
       binders:
         # 定义的名称，用于Binding整合
@@ -34,7 +36,7 @@ spring:
 
 eureka:
   instance:
-    instance-id: provider8801
+    instance-id: consumer8902
     prefer-ip-address: true
   client:
     # true表示向注册中心注册自己，因为这是业务模块
@@ -43,4 +45,3 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:7001/eureka/
-

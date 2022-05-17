@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>consumer8802</artifactId>
+    <artifactId>consumer8901</artifactId>
 
     <dependencies>
         <dependency>

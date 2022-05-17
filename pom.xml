@@ -28,7 +28,8 @@
         <module>client3355</module>
         <module>client3366</module>
         <module>provider8801</module>
-        <module>consumer8802</module>
+        <module>consumer8901</module>
+        <module>consumer8902</module>
     </modules>
     <!--打包方式为pom-->
     <packaging>pom</packaging>
