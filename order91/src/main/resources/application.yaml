@@ -1,0 +1,20 @@
+server:
+  port: 91
+
+spring:
+  application:
+    name: order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+# 访问的微服务名称或地址
+service-url:
+  nacos-user-service: http://pay
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

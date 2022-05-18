@@ -20,6 +20,7 @@
         <module>order84</module>
         <module>order85</module>
         <module>order86</module>
+        <module>order91</module>
         <module>eureka7001</module>
         <module>eureka7002</module>
         <module>hystrix9001</module>
@@ -27,9 +28,12 @@
         <module>config3344</module>
         <module>client3355</module>
         <module>client3366</module>
+        <module>client3377</module>
         <module>provider8801</module>
         <module>consumer8901</module>
         <module>consumer8902</module>
+        <module>pay9001</module>
+        <module>pay9002</module>
     </modules>
     <!--打包方式为pom-->
     <packaging>pom</packaging>
@@ -52,12 +56,15 @@
         <spring.cloud.hystrix.version>${spring.cloud.ribbon.version}</spring.cloud.hystrix.version>
         <spring.cloud.bus.version>3.1.0</spring.cloud.bus.version>
         <spring.cloud.stream.version>3.2.3</spring.cloud.stream.version>
+        <spring.cloud.zipkin.version>2.2.8.RELEASE</spring.cloud.zipkin.version>
+        <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
         <mysql.version>8.0.28</mysql.version>
         <druid.version>1.2.9</druid.version>
         <lombok.version>1.18.22</lombok.version>
         <mybatis.version>2.2.2</mybatis.version>
         <jackson.version>2.13.2</jackson.version>
         <ribbon.version>2.7.18</ribbon.version>
+        <snakeyaml.version>1.30</snakeyaml.version>
     </properties>
 
     <!--子模块继承后锁定依赖版本-->
@@ -204,6 +211,37 @@
                 <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
                 <version>${spring.cloud.stream.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-zipkin -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zipkin</artifactId>
+                <version>${spring.cloud.zipkin.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-alibaba-dependencies -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-discovery -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-config -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-loadbalancer -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-loadbalancer</artifactId>
+                <version>${spring.cloud.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
             <dependency>
                 <groupId>mysql</groupId>
@@ -247,10 +285,17 @@
                 <artifactId>jackson-annotations</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/com.netflix.ribbon/ribbon-loadbalancer -->
             <dependency>
                 <groupId>com.netflix.ribbon</groupId>
                 <artifactId>ribbon-loadbalancer</artifactId>
                 <version>${ribbon.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
