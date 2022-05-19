@@ -14,3 +14,4 @@ spring:
         server-addr: localhost:8848
         # 配置文件格式与类型
         file-extension: yaml
+        group: DEV_GROUP
