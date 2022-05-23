@@ -1,0 +1,22 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: sentinel
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        # 配置Sentinel Dashboard前端控制台地址
+        dashboard: localhost:8080
+        # 监控服务端口，默认为8719，如果占用就依次加一扫描
+        port: 8719
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
