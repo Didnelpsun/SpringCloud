@@ -14,6 +14,7 @@ spring:
         dashboard: localhost:8080
         # 监控服务端口，默认为8719，如果占用就依次加一扫描
         port: 8719
+      web-context-unify: false
 
 management:
   endpoints:
