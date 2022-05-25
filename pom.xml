@@ -14,6 +14,9 @@
         <module>pay8003</module>
         <module>pay8004</module>
         <module>pay8005</module>
+        <module>pay9001</module>
+        <module>pay9002</module>
+        <module>pay9003</module>
         <module>order81</module>
         <module>order82</module>
         <module>order83</module>
@@ -21,6 +24,7 @@
         <module>order85</module>
         <module>order86</module>
         <module>order91</module>
+        <module>order92</module>
         <module>eureka7001</module>
         <module>eureka7002</module>
         <module>hystrix9001</module>
@@ -32,8 +36,6 @@
         <module>provider8801</module>
         <module>consumer8901</module>
         <module>consumer8902</module>
-        <module>pay9001</module>
-        <module>pay9002</module>
         <module>sentinel9002</module>
     </modules>
     <!--打包方式为pom-->
