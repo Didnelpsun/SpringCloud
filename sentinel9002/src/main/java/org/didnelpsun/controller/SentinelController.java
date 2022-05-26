@@ -2,7 +2,6 @@
 package org.didnelpsun.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.didnelpsun.handler.SentinelHandler;
 import org.didnelpsun.service.SentinelService;
 import org.springframework.web.bind.annotation.GetMapping;
