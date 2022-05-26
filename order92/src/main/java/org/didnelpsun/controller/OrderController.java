@@ -31,7 +31,7 @@ public class OrderController {
 
     @PostConstruct
     public void setBaseUrl() {
-        this.baseUrl = "http://PAY/pay";
+        this.baseUrl = "http://pay/pay";
     }
 
     @GetMapping()

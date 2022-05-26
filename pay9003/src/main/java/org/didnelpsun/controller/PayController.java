@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Slf4j
-@RestController()
+@RestController
 @RequestMapping("/pay")
 public class PayController {
     @Resource
