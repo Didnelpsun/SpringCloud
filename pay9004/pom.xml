@@ -9,10 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>pay9003</artifactId>
+    <artifactId>pay9004</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>org.didnelpsun</groupId>
             <artifactId>common</artifactId>

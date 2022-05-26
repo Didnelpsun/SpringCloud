@@ -10,7 +10,8 @@ public enum Code {
     FORBIDDEN(403),
     NOT_FOUND(404),
     NO_RESPONSE(444),
-    SERVER_ERROR(500);
+    SERVER_ERROR(500),
+    SERVICE_UNAVAILABLE(503);
 
     private final int id;
 

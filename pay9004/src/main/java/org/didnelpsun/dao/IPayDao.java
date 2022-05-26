@@ -1,8 +1,8 @@
 // IPayDao.java
 package org.didnelpsun.dao;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.didnelpsun.entity.Pay;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

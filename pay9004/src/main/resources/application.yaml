@@ -1,6 +1,6 @@
 server:
   # 客户端默认会访问80的端口
-  port: 9003
+  port: 9004
 
 spring:
   application:
