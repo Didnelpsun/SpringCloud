@@ -5,8 +5,6 @@ import org.didnelpsun.entity.Pay;
 import org.didnelpsun.entity.Result;
 import org.didnelpsun.service.IPayService;
 import org.didnelpsun.util.Code;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,8 +13,8 @@ import java.util.List;
 @Service
 public class PayFallbackService implements IPayService {
     // 静态异常结果
-    public static String message = "Parameter exception, input: ";
-    public static Code code = Code.BAD_REQUEST;
+    public static String message = "The server is temporarily unavailable, input: ";
+    public static Code code = Code.SERVICE_UNAVAILABLE;
 
     @Override
     public Result<Pay> select(Long id) {

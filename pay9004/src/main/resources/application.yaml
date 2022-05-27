@@ -16,6 +16,24 @@ spring:
         # 监控服务端口，默认为8719，如果占用就依次加一扫描
         port: 8719
       web-context-unify: false
+      # 添加持久化保存数据地址
+      datasource:
+        # 数据源名为ds
+        ds:
+          # 数据源类型为Nacos
+          nacos:
+            serverAddr: localhost:8848
+            # 命名空间
+            namespace: public
+            # 保存数据的名称为当前应用名
+            dataId: ${spring.application.name}
+            # 默认组名
+            groupId: DEFAULT_GROUP
+            # 使用JSON格式保存数据
+            dataType: json
+            # 规则为流控规则
+            ruleType: flow
+
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver

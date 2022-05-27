@@ -1,3 +1,4 @@
+// DefaultFallback.java
 package org.didnelpsun.fallback;
 
 import org.didnelpsun.entity.Pay;
@@ -11,8 +12,8 @@ import java.util.List;
 
 public class DefaultFallback {
     // 静态异常结果
-    public static String message = "The server is temporarily unavailable, input: ";
-    public static Code code = Code.;
+    public static String message = "Parameter exception, input: ";
+    public static Code code = Code.BAD_REQUEST;
 
     public static Result<List<Pay>> selectsFallback(Throwable exception) {
         exception.printStackTrace();

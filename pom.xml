@@ -39,6 +39,7 @@
         <module>consumer8901</module>
         <module>consumer8902</module>
         <module>sentinel9002</module>
+        <module>order2001</module>
     </modules>
     <!--打包方式为pom-->
     <packaging>pom</packaging>
@@ -252,6 +253,12 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-seata -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
                 <version>${spring.cloud.alibaba.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
