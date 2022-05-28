@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.didnelpsun.dao.IOderDao">
+    <resultMap id="orderMap" type="org.didnelpsun.entity.Order">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="product_id" property="productId" jdbcType="BIGINT" />
+        <result column="count" property="count" jdbcType="INTEGER" />
+        <result column="money" property="money" jdbcType="DECIMAL" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+    </resultMap>
+    <select id="select" parameterType="Long" resultMap="orderMap">
+        select *
+        from order
+        where id = #{id}
+    </select>
+    <select id="selects" resultMap="orderMap">
+        select *
+        from order
+    </select>
+    <!--由于count与MySQL关键字一样所以使用反引号-->
+    <!--由于新插入订单，所以status固定为0-->
+    <insert id="insert" parameterType="org.didnelpsun.entity.Order" useGeneratedKeys="true" keyProperty="id">
+        insert into pay(userId, productId, `count`, money, status)
+        values (#{userId}, #{productId}, #{count}, #{money}, 0)
+    </insert>
+    <update id="update" parameterType="org.didnelpsun.entity.Order">
+        update order
+        set userId = #{userId},
+            productId = #{productId},
+            `count`= #{count},
+            money = #{money},
+            status = #{status}
+        where id = #{id}
+    </update>
+    <update id="updateStatus" parameterType="Long">
+        update order
+        set status = 1
+        where id = #{id}
+    </update>
+    <delete id="delete" parameterType="Long">
+        delete
+        from order
+        where id = #{id}
+    </delete>
+</mapper>

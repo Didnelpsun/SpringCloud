@@ -26,7 +26,7 @@
         set serial=#{serial}
         where id = #{id}
     </update>
-    <delete id="delete" parameterType="Pay">
+    <delete id="delete" parameterType="Long">
         delete
         from pay
         where id = #{id}

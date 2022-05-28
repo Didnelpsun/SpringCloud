@@ -72,6 +72,7 @@
         <ribbon.version>2.7.18</ribbon.version>
         <snakeyaml.version>1.30</snakeyaml.version>
         <sentinel.version>1.7.2</sentinel.version>
+        <seata.version>1.5.1</seata.version>
     </properties>
 
     <!--子模块继承后锁定依赖版本-->
@@ -255,12 +256,6 @@
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
                 <version>${spring.cloud.alibaba.version}</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-seata -->
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-                <version>${spring.cloud.alibaba.version}</version>
-            </dependency>
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
             <dependency>
                 <groupId>mysql</groupId>
@@ -321,6 +316,18 @@
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-datasource-nacos</artifactId>
                 <version>${sentinel.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.seata/seata-all -->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-all</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.seata/seata-spring-boot-starter -->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

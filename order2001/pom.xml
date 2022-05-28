@@ -13,13 +13,59 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.didnelpsun</groupId>
+            <artifactId>common</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.4.13</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+            <type>pom</type>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <!--由于依赖自带了一个seata，我们的seata不在项目里而是在电脑中，所以这里把seata去掉，只留下seata对应的依赖-->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>3.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-loadbalancer</artifactId>
+            <version>3.0.5</version>
+        </dependency>
+        <!--Seata依赖需要跟电脑上安装的版本一致-->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-all</artifactId>
         </dependency>
     </dependencies>
 
